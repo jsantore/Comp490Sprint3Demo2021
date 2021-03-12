@@ -59,12 +59,12 @@ def save_data(all_data, cursor):
               univ_data['school.state'], univ_data['2017.earnings.3_yrs_after_completion.overall_count_over_poverty_line'],
               univ_data['2016.repayment.3_yr_repayment.overall']))
 
+
 def save_xcel_data(xcel_data, cursor):
     first_item = xcel_data[0]
     question_marks = ', '.join('?'*len(first_item)) # new to python? put one question mark for every data item
     column_names = ', '.join(list(first_item))
     insert_statement = f"INSERT INTO job_stats ({column_names}) VALUES ({question_marks});"
- #   print(insert_statement)
     for record in xcel_data:
         fill_in_blanks = tuple(record.values())
         cursor.execute(insert_statement, fill_in_blanks)
