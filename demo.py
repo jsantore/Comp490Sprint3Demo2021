@@ -11,6 +11,7 @@ def main():
     conn, cursor = database_handler.open_db("comp490.sqlite")
     database_handler.make_tables(cursor, xcel_data[0])
     database_handler.save_data(api_data, cursor)
+    database_handler.save_xcel_data(xcel_data, cursor)
     database_handler.close_db(conn)
 
 
